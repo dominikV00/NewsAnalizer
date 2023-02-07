@@ -21,8 +21,10 @@ public class Login {
         // read from kb a user
         //while user from kb ! = a user in db stay here
 
+        int MAXTRIES = 3;
         int failLogin = 0;
         boolean success = false;
+
         do {
             System.out.println("Username:");
             String kbUsername = new Scanner(System.in).nextLine();
@@ -33,6 +35,8 @@ public class Login {
             userKb.setUsername(kbUsername);
             userKb.setPassword(kbPwd);
 
+            failLogin++;
+
             for (User u : listUsers) {
 
                 if (u.equalsUsers(userKb)) {
@@ -41,9 +45,7 @@ public class Login {
                 }
             }
 
-            failLogin++;
-
-            if (failLogin >= 3) {
+            if (failLogin == MAXTRIES) {
                 System.out.println("You failed to enter your account to many times!");
                 System.out.println("Please wait 5 seconds and try again.");
                 System.out.println("5");
@@ -85,6 +87,7 @@ public class Login {
                 while (st.hasMoreTokens()) {
                     String u = st.nextToken();
                     String p = st.nextToken();
+                    String admin = st.nextToken();
 
 
                     uObj.setUsername(u.trim());
