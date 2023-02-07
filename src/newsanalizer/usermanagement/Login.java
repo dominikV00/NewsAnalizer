@@ -69,9 +69,14 @@ public class Login {
 
         Path path = Paths.get("users.txt");
         List<User> listOfUsers = new ArrayList<>();
+
+        List<String> listOfUsersAsStrings = null;
         try {
-            List<String> listOfUsersAsStrings = Files.readAllLines(path);
-            System.out.println(listOfUsersAsStrings);
+            listOfUsersAsStrings = Files.readAllLines(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(listOfUsersAsStrings);
 
             for (int i = 0; i < listOfUsersAsStrings.size(); i++) {
                 User uObj = new User();
@@ -87,10 +92,6 @@ public class Login {
                 }
                 listOfUsers.add(uObj);
             }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         return listOfUsers;
     }
