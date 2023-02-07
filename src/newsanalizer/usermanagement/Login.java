@@ -30,10 +30,14 @@ public class Login {
             String kbUsername = new Scanner(System.in).nextLine();
             System.out.println("Password:");
             String kbPwd = new Scanner(System.in).nextLine();
+            System.out.println("Admin:");
+            String kbAdmin = new Scanner(System.in).nextLine();
+
 
             User userKb = new User();
             userKb.setUsername(kbUsername);
             userKb.setPassword(kbPwd);
+            userKb.setAdmin(Boolean.parseBoolean(kbAdmin));
 
             failLogin++;
 
@@ -92,6 +96,7 @@ public class Login {
 
                     uObj.setUsername(u.trim());
                     uObj.setPassword(p.trim());
+                    uObj.setAdmin(Boolean.parseBoolean(admin));
                 }
                 listOfUsers.add(uObj);
             }
