@@ -5,7 +5,7 @@ public class User {
 
     private String username;
     private String password;
-    private boolean admin;
+    private boolean isAdmin;
 
     public void setUsername(String username) {
         this.username = username;
@@ -16,7 +16,11 @@ public class User {
     }
 
     public void setAdmin(boolean admin) {
-        this.admin = admin;
+        this.isAdmin = admin;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
     public boolean equalsUsers(Object o) {
@@ -36,7 +40,7 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", admin=" + admin +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }
